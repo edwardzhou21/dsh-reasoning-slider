@@ -13,17 +13,25 @@ Open the model picker, drag the slider, and the effort level takes effect on rel
 
 ## 安装
 
-需要 pnpm（`npm i -g pnpm`）与 dsh（`npm i -g @deepseek-ai/dsh`）。
+需要 pnpm（`npm i -g pnpm`）与 dsh（`npm i -g @deepseek-ai/dsh`）。profile 名按需改成 `desktop` / `web` / `tui`。
+
+**从本仓库安装（推荐，tag 版）**
 
 ```sh
-dsh plugin --profile web add reasoning-slider
+dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/tags/v0.0.7.tar.gz
 ```
 
-从 GitHub 源码安装（把 `<user>/<repo>` 换成实际仓库，profile 名按需改）：
+**想跟最新提交**
 
 ```sh
-dsh plugin --profile desktop add https://github.com/<user>/<repo>/archive/refs/tags/v0.0.7.tar.gz
+dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/heads/main.tar.gz
 ```
+
+> 注意：npm 上的 `reasoning-slider` 是**上游原版**（不含本仓库的改动）。如果只想用原版：
+>
+> ```sh
+> dsh plugin --profile web add reasoning-slider
+> ```
 
 ## 功能
 
