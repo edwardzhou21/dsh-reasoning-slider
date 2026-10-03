@@ -11,6 +11,8 @@ Open the model picker, drag the slider, and the effort level takes effect on rel
 - 键盘 ←/→ ↑/↓ 与鼠标滚轮都能切档；单档位模型会提示"支持档位"
 - Drag to preview · per-model effort fallback · keyboard and wheel support
 
+![DeepSeek Harness 模型选择器里的推理等级滑条（内嵌插件，最高档 Max）](assets/screenshots/effort-slider.png)
+
 ## 安装
 
 需要 pnpm（`npm i -g pnpm`）与 dsh（`npm i -g @deepseek-ai/dsh`）。profile 名按需改成 `desktop` / `web` / `tui`。
