@@ -8,13 +8,13 @@ A Codex-style reasoning-effort slider embedded in the DeepSeek Harness model sel
 Open the model picker, drag the slider, and the effort level takes effect on release.
 
 - 拖动实时预览、松手生效；换模型自动携带当前档位，目标模型不支持时回退到默认档
-- 拖动时**每拉动一格，填充的蓝色就比上一格更深一档**（同一色相只降亮度）；最高档前的最后一格仍是最深的 `#339CFF`，max 的紫色渐变保持不变
+- 拖动时**每拉动一格，填充的蓝色就比上一格更深更浓一档**：色相从 210° 慢慢偏到 223.1°、饱和度全程拉满、亮度从 65% 压到 32.7%，最低档是鲜亮的蔚蓝，最高档前的最后一格是**克莱因蓝 `#002FA7`**，max 的紫色渐变保持不变
 - 键盘 ←/→ ↑/↓ 与鼠标滚轮都能切档；单档位模型会提示"支持档位"
-- Drag to preview · per-model effort fallback · keyboard and wheel support · each notch deepens the fill blue by one shade
+- Drag to preview · per-model effort fallback · keyboard and wheel support · each notch deepens and saturates the fill blue, up to International Klein Blue
 
 ![DeepSeek Harness 模型选择器里的推理等级滑条（内嵌插件，最高档 Max）](assets/screenshots/effort-slider.png)
 
-![每拉动一格蓝色深一档（Low → Medium → High → XHigh → Max，最高档仍是原来的紫色渐变）](assets/screenshots/effort-deepen.png)
+![每拉动一格蓝色更深更艳（Low → Medium → High → XHigh → Max：蔚蓝 → 克莱因蓝，最高档仍是原来的紫色渐变）](assets/screenshots/effort-deepen.png)
 
 ## 安装
 
@@ -23,7 +23,7 @@ Open the model picker, drag the slider, and the effort level takes effect on rel
 **从本仓库安装（推荐，tag 版）**
 
 ```sh
-dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/tags/v0.0.8.tar.gz
+dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/tags/v0.0.9.tar.gz
 ```
 
 **想跟最新提交**
@@ -54,7 +54,7 @@ dsh plugin --profile web remove reasoning-slider
 
 ## 兼容性
 
-`reasoning-slider@0.0.8` 支持 DSH `0.1.2-alpha.2`、`0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 与 `0.2.0-rc.2`，要求 Node.js `22.13.0` 或更高版本。DSH `0.1.2-alpha.3` 尚未验证。
+`reasoning-slider@0.0.9` 支持 DSH `0.1.2-alpha.2`、`0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 与 `0.2.0-rc.2`，要求 Node.js `22.13.0` 或更高版本。DSH `0.1.2-alpha.3` 尚未验证。
 
 一次性 `web` Profile 已在 Windows、Node.js `24.19.0`、DSH `0.1.2-alpha.2` 环境，以及 WSL2 Ubuntu、Node.js `22.23.2`、DSH `0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 环境完成本地插件安装、配置合成、服务冷启动、认证页面响应及卸载复核。
 
@@ -74,6 +74,12 @@ dsh-reasoning-slider/
 客户端代码是 `window.__ModuleLoader__.load({...})` 格式的普通 JavaScript，无构建步骤；React 通过 `require("react")` 从 dsh 运行时解析。
 
 ## 更新日志
+
+### 0.0.9
+
+- 色阶整体**提鲜**：不再只降亮度（那样低档会被冲淡成粉蓝色），改成色相从 `210°` 慢慢偏到 `223.1°`、饱和度全程 `100%`、亮度从 `65%` 压到 `32.7%`。
+- 色阶最高档（max 下面那格）改为**克莱因蓝 `#002FA7`**（= `hsl(223.1, 100%, 32.7%)`），最低档是鲜亮的蔚蓝 `#4DA6FF`；每一格都比上一格更深也更浓。最深色依旧铺满最后两格，所以 max 的紫色渐变与它下面那格的位置关系不变。
+- 五档模型实测渐变为 `#1579FF → #004FDE → #002FA7`（再往上就是紫色 max）；四档模型为 `#0061F9 → #002FA7`。
 
 ### 0.0.8
 
