@@ -1,6 +1,15 @@
 # dsh-reasoning-slider
 
-**推理等级滑块**，直接内嵌在 DeepSeek Harness 的模型选择器里：点开模型选择器，选中模型后下方出现滑块，拖动即可切换该模型的推理档位（off / minimal / low / medium / high / xhigh / max）。
+**推理等级滑块 · Reasoning-effort slider** —— 内嵌在 DeepSeek Harness 模型选择器里的滑条：
+点开模型选择器、选中模型，下方就出现该模型支持的推理档位，拖动即可切换
+（off / minimal / low / medium / high / xhigh / max）。
+
+A Codex-style reasoning-effort slider embedded in the DeepSeek Harness model selector.
+Open the model picker, drag the slider, and the effort level takes effect on release.
+
+- 拖动实时预览、松手生效；换模型自动携带当前档位，目标模型不支持时回退到默认档
+- 键盘 ←/→ ↑/↓ 与鼠标滚轮都能切档；单档位模型会提示"支持档位"
+- Drag to preview · per-model effort fallback · keyboard and wheel support
 
 ## 安装
 
