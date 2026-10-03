@@ -1,6 +1,6 @@
 {
   "name": "reasoning-slider",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Codex-style reasoning-effort slider embedded in the DSH model selector",
   "type": "module",
   "main": "./lib/index.js",

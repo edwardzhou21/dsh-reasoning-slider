@@ -8,10 +8,13 @@ A Codex-style reasoning-effort slider embedded in the DeepSeek Harness model sel
 Open the model picker, drag the slider, and the effort level takes effect on release.
 
 - 拖动实时预览、松手生效；换模型自动携带当前档位，目标模型不支持时回退到默认档
+- 拖动时**每拉动一格，填充的蓝色就比上一格更深一档**（同一色相只降亮度）；最高档前的最后一格仍是最深的 `#339CFF`，max 的紫色渐变保持不变
 - 键盘 ←/→ ↑/↓ 与鼠标滚轮都能切档；单档位模型会提示"支持档位"
-- Drag to preview · per-model effort fallback · keyboard and wheel support
+- Drag to preview · per-model effort fallback · keyboard and wheel support · each notch deepens the fill blue by one shade
 
 ![DeepSeek Harness 模型选择器里的推理等级滑条（内嵌插件，最高档 Max）](assets/screenshots/effort-slider.png)
+
+![每拉动一格蓝色深一档（Low → Medium → High → XHigh → Max，最高档仍是原来的紫色渐变）](assets/screenshots/effort-deepen.png)
 
 ## 安装
 
@@ -20,7 +23,7 @@ Open the model picker, drag the slider, and the effort level takes effect on rel
 **从本仓库安装（推荐，tag 版）**
 
 ```sh
-dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/tags/v0.0.7.tar.gz
+dsh plugin --profile desktop add https://github.com/edwardzhou21/dsh-reasoning-slider/archive/refs/tags/v0.0.8.tar.gz
 ```
 
 **想跟最新提交**
@@ -51,7 +54,7 @@ dsh plugin --profile web remove reasoning-slider
 
 ## 兼容性
 
-`reasoning-slider@0.0.7` 支持 DSH `0.1.2-alpha.2`、`0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 与 `0.2.0-rc.2`，要求 Node.js `22.13.0` 或更高版本。DSH `0.1.2-alpha.3` 尚未验证。
+`reasoning-slider@0.0.8` 支持 DSH `0.1.2-alpha.2`、`0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 与 `0.2.0-rc.2`，要求 Node.js `22.13.0` 或更高版本。DSH `0.1.2-alpha.3` 尚未验证。
 
 一次性 `web` Profile 已在 Windows、Node.js `24.19.0`、DSH `0.1.2-alpha.2` 环境，以及 WSL2 Ubuntu、Node.js `22.23.2`、DSH `0.1.2-alpha.4`、`0.1.2-alpha.5`、`0.1.2-rc.1` 环境完成本地插件安装、配置合成、服务冷启动、认证页面响应及卸载复核。
 
@@ -71,6 +74,12 @@ dsh-reasoning-slider/
 客户端代码是 `window.__ModuleLoader__.load({...})` 格式的普通 JavaScript，无构建步骤；React 通过 `require("react")` 从 dsh 运行时解析。
 
 ## 更新日志
+
+### 0.0.8
+
+- 滑条填充改为**逐格加深**：每往上拉动一格，蓝色就比上一格更深一档。做法是把色相（209.1°）与饱和度（100%）钉死，只把亮度从 80% 线性压到 60%，所以看起来始终是"同一个蓝越来越深"，不会换色。
+- 最深的一档仍然正好是原来的 `#339CFF`，且最深色铺满最高档与其下一格 —— 因此**最高档的紫色渐变（max）与它下面那格的观感完全不变**，只有更低的档位变浅。只有 1～2 档的模型保持原样。
+- 颜色切换带 0.16s 过渡（拖动中即时跟手，不拖尾），`prefers-reduced-motion: reduce` 下自动关闭。
 
 ### 0.0.7
 
